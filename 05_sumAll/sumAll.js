@@ -1,16 +1,12 @@
-const sumAll = function(a, b) {
-  if (typeof a !== 'number' || typeof b !== 'number' ||
-    a < 0 || b < 0 ||
-    a % 1 !== 0 || b % 1 !== 0
-  ) {
-    return 'ERROR';
-  }
-  let biggest = a>b ? a : b;
-  let smallest = biggest===a ? b : a;
+const sumAll = function(min, max) {
+  if (!Number.isInteger(min)|| !Number.isInteger(max) ||
+  min < 0 || max < 0) return 'ERROR';
+  
+  [max, min] = min > max ? [min, max] : [max, min]
+  
   let sum = 0;
-
-  for (;smallest <= biggest; smallest++) {
-    sum += smallest;
+  for (;min <= max; min++) {
+    sum += min;
   }
   return sum;
 };
